@@ -1,8 +1,13 @@
-// See https://containers.dev/implementors/json_reference/ for configuration reference
 {
-	"name": "Coding Interview Backend Level 3",
-	"build": {
-		"dockerfile": "Dockerfile"
-	},
-  "remoteUser": "node"
+    "name": "Coding Interview Backend Level 3",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "remoteUser": "node",
+    "forwardPorts": [3000],
+    "postCreateCommand": "npm ci",
+    "shutdownAction": "none",
+    "mounts": [
+        "source=${localWorkspaceFolder}/.npm-cache,target=/home/node/.npm-cache,type=bind"
+    ]
 }
